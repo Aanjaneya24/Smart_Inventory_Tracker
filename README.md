@@ -34,10 +34,12 @@ Smart_Inventory_Tracker/
 │── main.py          # Entry point
 │── requirements.txt # Dependencies
 │── README.md        # Project documentation
-⚙️ Installation & Setup
-Clone the repository
-Bash
 
+---
+
+## ⚙️ Installation & Setup
+### **Clone the repository**
+```bash
 git clone [https://github.com/Aanjaneya24/Smart_Inventory_Tracker.git](https://github.com/Aanjaneya24/Smart_Inventory_Tracker.git)
 cd Smart_Inventory_Tracker
 Install dependencies
