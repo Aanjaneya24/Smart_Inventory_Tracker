@@ -1,0 +1,35 @@
+# quantum_model.py
+from qiskit import QuantumCircuit, Aer, execute
+from qiskit.visualization import plot_histogram
+import matplotlib.pyplot as plt
+
+def create_quantum_offloading_circuit(num_qubits=2):
+    """Creates a simple quantum circuit that simulates task processing."""
+    qc = QuantumCircuit(num_qubits, num_qubits)
+    
+    # Apply Hadamard gates to create superposition
+    for i in range(num_qubits):
+        qc.h(i)
+    
+    # Apply a CNOT gate as a simple entanglement example
+    qc.cx(0, 1)
+    
+    # Measurement to map quantum state to classical bits
+    qc.measure(range(num_qubits), range(num_qubits))
+    
+    return qc
+
+if __name__ == "__main__":
+    qc = create_quantum_offloading_circuit()
+    print("Quantum Offloading Circuit:")
+    print(qc.draw())
+    
+    # Execute circuit on the qasm simulator
+    simulator = Aer.get_backend('qasm_simulator')
+    result = execute(qc, backend=simulator, shots=1024).result()
+    counts = result.get_counts(qc)
+    
+    # Plot result histogram
+    plot_histogram(counts)
+    plt.title("Quantum Offloading Simulation Outcome")
+    plt.show()
